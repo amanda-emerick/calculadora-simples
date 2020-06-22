@@ -1,0 +1,215 @@
+<html>
+	<head>
+		<title>Calculadora</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href="iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+
+    <style>
+      .calculadora {
+        margin-top: 40px;
+        border: solid 1px #000;
+        padding: 20px;
+        background-color: #2E2E2E;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px #000;
+      }
+
+      .btn {
+        width: 60px;
+        height: 50px;
+        margin: 5px;
+        box-shadow: 1px 1px 1px #000;
+      }
+
+      .enter {
+        height: 110px;
+      }
+
+      .zero {
+        width: 130px
+      }
+
+      .form-control {
+        text-align: right;
+        font-size: 20px;
+        border: solid 1px #000;
+        box-shadow: 1px 1px 1px #000;
+        line-height: 1;
+      }
+
+      .resultado {
+        margin-top: 10px;
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        padding-bottom: 0;
+        color: #000;
+      }
+
+      .resultado2 {
+        margin-bottom: 20px;
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding-top: 0;
+      }
+
+    </style>
+	</head>
+
+  <body style="background: #D9D9D9">
+
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <br />
+
+          <div class="calculadora">
+            
+            <input id="resultado" type="text" class="form-control resultado" placeholder="0" disabled="disabled" />
+            <input id="resultado2" type="text" class="form-control resultado2" disabled="disabled" />
+
+            
+            <div class="row">
+              <button onclick="calcular('acao', 'c')" type="button" class="btn btn-dark btn-lg">C</button>
+              <button onclick="backspace()" type="button" class="btn btn-dark btn-lg font-weight-light"><span class="oi oi-arrow-thick-left"></span></button>
+              <button onclick="calcular('acao', '/')" type="button" class="btn btn-dark btn-lg font-weight-light">/</button>
+              <button onclick="calcular('acao', '*')" type="button" class="btn btn-dark btn-lg font-weight-light">x</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('valor', '7')" type="button" class="btn btn-dark btn-lg font-weight-light">7</button>
+              <button onclick="calcular('valor', '8')" type="button" class="btn btn-dark btn-lg font-weight-light">8</button>
+              <button onclick="calcular('valor', '9')" type="button" class="btn btn-dark btn-lg font-weight-light">9</button>
+              <button onclick="calcular('acao', '-')" type="button" class="btn btn-dark btn-lg font-weight-light">-</button>
+            </div>
+            
+            <div class="row">
+              <button onclick="calcular('valor', '4')" type="button" class="btn btn-dark btn-lg font-weight-light">4</button>
+              <button onclick="calcular('valor', '5')" type="button" class="btn btn-dark btn-lg font-weight-light">5</button>
+              <button onclick="calcular('valor', '6')" type="button" class="btn btn-dark btn-lg font-weight-light">6</button>
+              <button onclick="calcular('acao', '+')" type="button" class="btn btn-dark btn-lg font-weight-light">+</button>
+            </div>
+
+            <div class="row">
+              <button onclick="calcular('valor', '1')" type="button" class="btn btn-dark btn-lg font-weight-light">1</button>
+              <button onclick="calcular('valor', '2')" type="button" class="btn btn-dark btn-lg font-weight-light">2</button>
+              <button onclick="calcular('valor', '3')" type="button" class="btn btn-dark btn-lg font-weight-light">3</button>
+              <button onclick="calcular('acao', '=')" type="button" class="btn btn-dark btn-lg enter">=</button>
+            </div>
+
+            <div class="row" style="margin-top: -60px">
+              <button onclick="calcular('valor', '0')" type="button" class="btn btn-dark btn-lg zero font-weight-light">0</button>
+              <button onclick="calcular('acao', '.')" type="button" class="btn btn-dark btn-lg font-weight-light">.</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      
+      var display1 = document.getElementById('resultado')
+      var display2 = document.getElementById('resultado2');
+      
+      function calcular(tipo, valor) {
+       
+        if (tipo === 'acao') {
+ 
+          switch (valor) {
+            
+            case 'c':
+            // limpa os visores de resultado
+              display1.value = ''
+              display2.value = ''
+            break
+
+            case '.':
+             var tamanho = display1.value.length
+
+              if (display1.value.endsWith('.')) {
+                  //Substitui um ponto por outro ponto.
+                  display1.value = (display1.value.substring(0, (tamanho -1))) + valor
+
+              } else {
+                  display1.value += valor
+              }
+            break
+
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+                
+              if (display1.value.endsWith('+') || display1.value.endsWith('-') || display1.value.endsWith('*') || display1.value.endsWith('/')) {
+                  var tamanho = display1.value.length
+                
+                //Substitui um operador aritmético por outro  
+                if (tamanho > 1 || (valor == '-')) {
+                  display1.value = (display1.value.substring(0, (tamanho -1))) + valor
+                }
+
+              } else if (display1.value === '') {
+                //Se o primeiro valor digitado for - ele mostra no visor.
+                if (valor === '-') {
+                    display1.value += valor
+                }
+
+              } else {
+                  display1.value += valor
+              }
+            break
+
+            case '=':
+
+              if (display1.value != '') {
+                var valor_campo = eval(display1.value)
+                
+                display1.value = valor_campo
+                
+                limpar() //limpa o resultado exibido no display2.
+              }
+            break
+          }
+
+        } else if (tipo === 'valor') {
+          
+          display1.value += valor
+          subtotal(display1.value) //executa a função para mostrar o subtotal da operação
+          
+          }
+        }
+
+      //Calcula o subtotal que aparece no display 2.
+      function subtotal (string) {
+
+        if (string.endsWith('+') || string.endsWith('-') || string.endsWith('/') || string.endsWith('*')) {
+            var tamanho = string.length
+            string = (string.substring(0, (tamanho -1)))
+            var valor_subtotal = eval(string)
+            display2.value = valor_subtotal
+        } else {
+            var valor_subtotal = eval(string)
+            display2.value = valor_subtotal
+        }
+      }
+
+      //Limpa o subtotal que aparece no display 2 quando pressionada a tecla =.
+      function limpar() {
+        display2.value = ''
+      }
+
+      //Apaga o último valor clicado
+      function backspace() {
+        var tamanho = display1.value.length
+        display1.value = (display1.value.substring(0, (tamanho -1)))
+        subtotal(display1.value)
+      }
+
+    </script>    
+  </body>	
+
+</html>
