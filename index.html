@@ -4,10 +4,8 @@
 
     <!-- Estilo CSS -->
     <link rel="stylesheet" type="text/css" href="estilo.css">
-		<!-- Bootstrap -->
+		<!-- CDN Bootstrap -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <!-- Iconic -->
-    <link href="iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
 	</head>
 
@@ -23,11 +21,9 @@
             <input id="resultado" type="text" class="form-control primeiro-visor" placeholder="0" disabled="disabled" />
             <input id="resultado2" type="text" class="form-control segundo-visor" disabled="disabled" />
 
-            
             <div class="row">
-              <button onclick="calcular('acao', 'c')" type="button" class="btn btn-dark btn-lg">C</button>
-              <button onclick="backspace()" type="button" class="btn btn-dark btn-lg font-weight-light">
-                <span class="oi oi-arrow-thick-left"></span></button>
+              <button onclick="calcular('acao', 'c')" type="button" class="btn btn-dark btn-lg font-weight-light">C</button>
+              <button onclick="backspace()" type="button" class="btn btn-dark btn-lg font-weight-light"><--</button>
               <button onclick="calcular('acao', '/')" type="button" class="btn btn-dark btn-lg font-weight-light">/</button>
               <button onclick="calcular('acao', '*')" type="button" class="btn btn-dark btn-lg font-weight-light">x</button>
             </div>

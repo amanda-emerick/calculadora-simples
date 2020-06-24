@@ -81,6 +81,8 @@ function subtotal (string) {
         string = (string.substring(0, (tamanho -1)))
         var valor_subtotal = eval(string)
         display2.value = valor_subtotal
+    } else if (string == '') {
+        display2.value = ''
     } else {
         var valor_subtotal = eval(string)
         display2.value = valor_subtotal
