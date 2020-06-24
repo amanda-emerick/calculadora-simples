@@ -16,7 +16,7 @@ O layout da calculadora foi desenvolvido utilizando Bootstrap e Css, e as funç�
 
 Utilizando o projeto passado no curso como base, implementei algumas melhorias e solucionei algumas falhas, tais como:
 
-1. Aumentei o tamanho do visor e inseri um segundo campo para mostrar o subtotal do cálculo;
-2. Incluí o botão "backspace" para permitir ao usuário apagar os últimos valores inseridos;
+1. Aumentei o tamanho do visor e criei a função subtotal para ir mostrando o resultado conforme o usuário vai fazendo o cálculo;
+2. Incluí o botão e criei a função "backspace" para permitir ao usuário apagar os últimos valores inseridos;
 3. Corrigi a falha que permitia inserir um operador aritmético após o outro (exemplo: 2*/-3);
 4. Corrigi a falha que permitia inserir mais de um . em um mesmo número (exemplo: 2.2.2.2).
