@@ -74,7 +74,8 @@
             
             <div class="row">
               <button onclick="calcular('acao', 'c')" type="button" class="btn btn-dark btn-lg">C</button>
-              <button onclick="backspace()" type="button" class="btn btn-dark btn-lg font-weight-light"><span class="oi oi-arrow-thick-left"></span></button>
+              <button onclick="backspace()" type="button" class="btn btn-dark btn-lg font-weight-light">
+                <span class="oi oi-arrow-thick-left"></span></button>
               <button onclick="calcular('acao', '/')" type="button" class="btn btn-dark btn-lg font-weight-light">/</button>
               <button onclick="calcular('acao', '*')" type="button" class="btn btn-dark btn-lg font-weight-light">x</button>
             </div>
@@ -128,15 +129,19 @@
             break
 
             case '.':
+                         
              var tamanho = display1.value.length
-
-              if (display1.value.endsWith('.')) {
-                  //Substitui um ponto por outro ponto.
-                  display1.value = (display1.value.substring(0, (tamanho -1))) + valor
-
-              } else {
+             
+              if (display1.value.includes('.') == true) {
+                var ultimoPonto = display1.value.lastIndexOf('.') + 1
+                if ((display1.value.includes('+',ultimoPonto) == true) || (display1.value.includes('-',ultimoPonto) == true)
+                 || (display1.value.includes('*',ultimoPonto) == true) || (display1.value.includes('/',ultimoPonto) == true)) {
                   display1.value += valor
+                 }
+              } else if (display1.value.includes('.') == false) {
+                display1.value += valor
               }
+              
             break
 
             case '+':
